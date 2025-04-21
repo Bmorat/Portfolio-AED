@@ -1,0 +1,58 @@
+Ejercicio 6:
+
+public class StringMethodsExample {
+    public static void main(String[] args) {
+        String str = "Hola, Mundo! Esto es un ejemplo.";
+
+        // substring
+        System.out.println(str.substring(6)); // Mundo! Esto es un ejemplo.
+        System.out.println(str.substring(6, 11)); // Mundo
+
+        // split
+        String[] palabras = str.split(" ");
+        for (String palabra : palabras) {
+            System.out.println(palabra);
+        }
+        // También puedes limitar el número de resultados
+        String[] limitado = str.split(" ", 3);
+        for (String palabra : limitado) {
+            System.out.println(palabra);
+        }
+
+        // subSequence
+        System.out.println(str.subSequence(6, 11)); // Mundo
+
+        // trim
+        System.out.println("   Hola Mundo!   ".trim()); // Hola Mundo!
+
+        // toLowerCase
+        System.out.println(str.toLowerCase()); // hola, mundo! esto es un ejemplo.
+
+        // toUpperCase
+        System.out.println(str.toUpperCase()); // HOLA, MUNDO! ESTO ES UN EJEMPLO.
+
+        // indexOf
+        System.out.println(str.indexOf('M')); // 6
+        System.out.println(str.indexOf("Mundo")); // 6
+        System.out.println(str.indexOf('o', 5)); // 15
+
+        // lastIndexOf
+        System.out.println(str.lastIndexOf('o')); // 25
+        System.out.println(str.lastIndexOf("es")); // 19
+
+        // contains
+        System.out.println(str.contains("Mundo")); // true
+
+        // replace
+        System.out.println(str.replace('o', 'a')); // Hala, Mund! Estas es un ejempla.
+        System.out.println(str.replace("Hola", "Adiós")); // Adiós, Mundo! Esto es un ejemplo.
+
+        // replaceAll
+        System.out.println(str.replaceAll("o", "a")); // Hala, Mund! Estas es un ejempla.
+
+        // replaceFirst
+        System.out.println(str.replaceFirst("o", "a")); // Hala, Mundo! Esto es un ejemplo.
+    }
+}
+
+

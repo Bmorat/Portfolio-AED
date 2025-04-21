@@ -1,0 +1,7 @@
+EJERCICIO 10
+
+¿Cuán larga es las string devuelta por la siguiente expresión? ¿cuál es la string?
+"Was it a car or a cat I saw?".substring(9, 12)
+
+La expresión "Was it a car or a cat I saw?".substring(9, 12) devuelve una cadena que comienza en el índice 9 y 
+termina justo antes del índice 12. Por lo tanto, la cadena devuelta es "car" y su longitud es de 3 caracteres.

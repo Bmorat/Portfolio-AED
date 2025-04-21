@@ -1,0 +1,39 @@
+Ejercicio 7
+
+public class StringBuilderExample {
+    public static void main(String[] args) {
+        // Constructores
+        StringBuilder sb1 = new StringBuilder();
+        StringBuilder sb2 = new StringBuilder(10);
+        StringBuilder sb3 = new StringBuilder("Hola");
+
+        // setLength
+        sb1.append("Hola");
+        sb1.setLength(10);
+        System.out.println(sb1); // "Hola" seguido de 6 caracteres de espacio
+
+        // ensureCapacity
+        sb2.ensureCapacity(32);
+        System.out.println(sb2.capacity()); // al menos 32
+
+        // append
+        sb1.append(" Mundo");
+        System.out.println(sb1); // "Hola Mundo"
+
+        // insert
+        sb1.insert(5, "querido ");
+        System.out.println(sb1); // "Hola querido Mundo"
+
+        // delete
+        sb1.delete(5, 13);
+        System.out.println(sb1); // "Hola Mundo"
+
+        // deleteCharAt
+        sb1.deleteCharAt(4);
+        System.out.println(sb1); // "HolaMundo"
+
+        // reverse
+        sb1.reverse();
+        System.out.println(sb1); // "odnuMaloH"
+    }
+}

@@ -1,0 +1,40 @@
+UT3_PD2
+
+Descripción en Lenguaje Natural:
+
+Crear un nuevo nodo con el dato a insertar.
+Si la lista está vacía, hacer que el nuevo nodo sea el primero.
+Si la lista no está vacía, recorrer la lista hasta encontrar el último nodo.
+Hacer que el último nodo apunte al nuevo nodo.
+
+Precondiciones y Postcondiciones
+
+Precondiciones:
+
+La lista enlazada está inicializada.
+El dato a insertar está disponible.
+
+Postcondiciones:
+
+El nuevo nodo se inserta al final de la lista.
+Si la lista estaba vacía, el nuevo nodo se convierte en el primero.
+
+ALGORITMO InsertarEnLista
+ENTRADA: lista (referencia a la lista enlazada), dato (valor a insertar)
+SALIDA: lista actualizada con el nuevo dato
+
+1. Crear un nuevo nodo con el dato
+2. SI lista.primero ES nulo ENTONCES
+3.     lista.primero <- nuevo nodo
+4. SINO
+5.     nodoActual <- lista.primero
+6.     MIENTRAS nodoActual.siguiente NO ES nulo HACER
+7.         nodoActual <- nodoActual.siguiente
+8.     FIN MIENTRAS
+9.     nodoActual.siguiente <- nuevo nodo
+10. FIN SI
+11. FIN ALGORITMO
+
+Cosas que debería mejorar:
+Claridad del seudocódigo: Asegurarnos de que cada paso esté claro y bien definido.
+Verificación práctica: Probar el seudocódigo con diferentes situaciones, como listas vacías, listas con un solo elemento, y listas con múltiples elementos.

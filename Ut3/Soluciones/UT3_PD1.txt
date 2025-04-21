@@ -1,0 +1,119 @@
+UT3_PD1
+
+Ejercicio 1:
+
+Nuevo nodo otroNodo 
+otroNodo.siguiente = nodo1 
+nodo2.siguiente = nodo3 
+
+otroNodo.siguiente = nodo1: Esto hace que otroNodo apunte a nodo1.
+nodo2.siguiente = nodo3: Esto hace que nodo2 apunte a nodo3.
+
+Análisis de las opciones:
+
+a) Inserta “otroNodo” en la lista, quedando como anterior a nodo1.
+Falso. otroNodo apunta a nodo1, pero no está insertado en la lista.
+
+b) Inserta “otroNodo” en la lista, quedando entre nodo1 y nodo2.
+Falso. No hay conexión entre nodo1 y nodo2 que incluya a otroNodo.
+
+c) Elimina nodo2 de la lista.
+Falso. nodo2 sigue apuntando a nodo3.
+
+d) No tiene ningún efecto sobre la lista.
+Verdadero. No se cambia la estructura de la lista.
+
+Ejercicio 2:
+
+Nuevo nodo otroNodo 
+otroNodo = nodo1.siguiente 
+nodo1.siguiente = nodo3 
+
+Análisis de las opciones:
+
+a) Inserta “otroNodo” en la lista, quedando como anterior a nodo1.
+Falso. otroNodo simplemente apunta a nodo2.
+
+b) Inserta “otroNodo” en la lista, quedando entre nodo1 y nodo2.
+Falso. nodo2 es eliminado de la lista.
+
+c) Elimina nodo2 de la lista.
+Verdadero. nodo2 ya no está en la lista porque nodo1 apunta directamente a nodo3.
+
+d) No tiene ningún efecto sobre la lista.
+Falso. nodo2 es eliminado de la lista.
+
+Ejercicio 3:
+
+Nuevo nodo otroNodo 
+otroNodo.siguiente = nodo1.siguiente 
+nodo1.siguiente = otroNodo 
+
+
+Análisis de las opciones:
+
+a) Inserta “otroNodo” en la lista, quedando como anterior a nodo1.
+Falso. otroNodo está entre nodo1 y nodo2.
+
+b) Inserta “otroNodo” en la lista, quedando entre nodo1 y nodo2.
+Verdadero. otroNodo está ahora entre nodo1 y nodo2.
+
+c) Elimina nodo2 de la lista.
+Falso. nodo2 sigue siendo parte de la lista.
+
+d) Dará error en tiempo de ejecución si nodo1 es el primero o nodo3 es el último.
+Falso. No depende de la posición de nodo1 o nodo3.
+
+Ejercicio 4:
+
+Nuevo nodo otroNodo 
+Nuevo nodo nodoActual 
+nodoActual = primero 
+mientras nodoActual != null hacer 
+  nodoActual = nodoActual.siguiente 
+fin mientras 
+nodoActual.siguiente = otroNodo 
+
+Análisis de las opciones:
+
+a) Inserta correctamente “otroNodo” en la lista, quedando como último nodo.
+Falso. Dará error porque nodoActual es null.
+
+b) Inserta correctamente “otroNodo” en la lista, quedando como primer nodo.
+Falso. El algoritmo no cambia el primer nodo.
+
+c) El algoritmo está mal hecho, ya que dará error en tiempo de ejecución si la lista está vacía.
+Verdadero. Dará error si nodoActual es null.
+
+d) El algoritmo está mal hecho, ya que dará siempre error en tiempo de ejecución.
+Verdadero. Dará error siempre porque nodoActual es null al final.
+
+Ejercicio 5:
+
+Nuevo nodo otroNodo 
+Nuevo nodo nodoActual 
+nodoActual = primero 
+mientras nodoActual.siguiente != null hacer 
+  nodoActual = nodoActual.siguiente 
+fin mientras 
+nodoActual.siguiente = otroNodo 
+
+Análisis de las opciones:
+
+a) Inserta correctamente “otroNodo” en la lista, quedando como último nodo.
+Verdadero. Inserta otroNodo al final.
+
+b) Inserta correctamente “otroNodo” en la lista, quedando como primer nodo.
+Falso. otroNodo se inserta al final.
+
+c) El algoritmo está mal hecho, ya que dará error en tiempo de ejecución si la lista está vacía.
+Verdadero. Si la lista está vacía, nodoActual es null.
+
+d) El algoritmo está mal hecho, ya que dará siempre error en tiempo de ejecución.
+Falso. Solo dará error si la lista está vacía.
+
+Ejercicio 6:
+
+a) El costo de memoria en una lista enlazada es dinámico y depende del número de elementos. En un array, el costo es fijo y depende del tamaño máximo predefinido.
+
+b) En una lista enlazada, podemos agregar o eliminar elementos fácilmente sin preocuparnos por el tamaño inicial. En un array, necesitamos definir el tamaño máximo antes de empezar, lo cual puede no ser eficiente si la cantidad de alumnos varía mucho.
