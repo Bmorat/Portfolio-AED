@@ -1,0 +1,134 @@
+Ejercicio 1
+
+Precondiciones y postcondiciones:
+
+Precondiciones: El árbol puede estar vacío o contener nodos con claves únicas.
+Postcondiciones: El nuevo nodo se insertará en el lugar correcto para mantener la propiedad del árbol binario de búsqueda.
+
+Método TArbolBB.Insertar(NuevoNodo)
+    Si Raíz es nulo
+        Raíz <- NuevoNodo
+    Sino
+        Llamar Raíz.Insertar(NuevoNodo)
+    Fin Si
+Fin Método
+
+Método TElementoAB.Insertar(NuevoNodo)
+    Si NuevoNodo.Clave < Clave
+        Si HijoIzquierdo es nulo
+            HijoIzquierdo <- NuevoNodo
+        Sino
+            Llamar HijoIzquierdo.Insertar(NuevoNodo)
+        Fin Si
+    Sino
+        Si HijoDerecho es nulo
+            HijoDerecho <- NuevoNodo
+        Sino
+            Llamar HijoDerecho.Insertar(NuevoNodo)
+        Fin Si
+    Fin Si
+Fin Método
+
+El tiempo de ejecución es O(h), donde h es la altura del árbol. En el peor caso, el tiempo de ejecución es O(n) para un árbol degenerado (similar a una lista enlazada).
+
+Ejercicio 2
+
+Descripción en lenguaje natural:
+
+Para contar todas las hojas del árbol, realizamos un recorrido (inorden, preorden, postorden) y contamos los nodos que no tienen hijos.
+Precondiciones y postcondiciones:
+
+Precondiciones: El árbol puede estar vacío o contener nodos con claves únicas.
+Postcondiciones: El número total de hojas será devuelto.
+
+Método TArbolBB.ContarHojas()
+    Si Raíz es nulo
+        retornar 0
+    Sino
+        retornar Raíz.ContarHojas()
+    Fin Si
+Fin Método
+
+Método TElementoAB.ContarHojas()
+    Si HijoIzquierdo es nulo y HijoDerecho es nulo
+        retornar 1
+    Sino
+        Contador <- 0
+        Si HijoIzquierdo no es nulo
+            Contador <- Contador + HijoIzquierdo.ContarHojas()
+        Fin Si
+        Si HijoDerecho no es nulo
+            Contador <- Contador + HijoDerecho.ContarHojas()
+        Fin Si
+        retornar Contador
+    Fin Si
+Fin Método
+
+El tiempo de ejecución es O(n), ya que cada nodo del árbol es visitado exactamente una vez.
+
+Ejercicio 3
+
+Descripción en lenguaje natural:
+
+Para calcular la suma de todas las claves en el árbol, realizamos un recorrido (inorden, preorden, postorden) sumando las claves de cada nodo.
+Precondiciones y postcondiciones:
+
+Precondiciones: El árbol puede estar vacío o contener nodos con claves únicas.
+Postcondiciones: La suma de las claves de todos los nodos será devuelta.
+
+
+Método TArbolBB.SumarClaves()
+    Si Raíz es nulo
+        retornar 0
+    Sino
+        retornar Raíz.SumarClaves()
+    Fin Si
+Fin Método
+
+Método TElementoAB.SumarClaves()
+    Suma <- Clave
+    Si HijoIzquierdo no es nulo
+        Suma <- Suma + HijoIzquierdo.SumarClaves()
+    Fin Si
+    Si HijoDerecho no es nulo
+        Suma <- Suma + HijoDerecho.SumarClaves()
+    Fin Si
+    retornar Suma
+Fin Método
+
+El tiempo de ejecución es O(n), ya que cada nodo del árbol es visitado exactamente una vez.
+
+Ejercicio 4
+
+Descripción en lenguaje natural:
+
+Para contar los nodos en un nivel específico, realizamos un recorrido del árbol y contamos los nodos que se encuentran en el nivel deseado.
+Precondiciones y postcondiciones:
+
+Precondiciones: El árbol puede estar vacío o contener nodos con claves únicas.
+Postcondiciones: El número total de nodos en el nivel especificado será devuelto.
+
+Método TArbolBB.ContarNodosEnNivel(Nivel)
+    Si Raíz es nulo
+        retornar 0
+    Sino
+        retornar Raíz.ContarNodosEnNivel(Nivel, 0)
+    Fin Si
+Fin Método
+
+Método TElementoAB.ContarNodosEnNivel(NivelObjetivo, NivelActual)
+    Si NivelActual == NivelObjetivo
+        retornar 1
+    Sino
+        Contador <- 0
+        Si HijoIzquierdo no es nulo
+            Contador <- Contador + HijoIzquierdo.ContarNodosEnNivel(NivelObjetivo, NivelActual + 1)
+        Fin Si
+        Si HijoDerecho no es nulo
+            Contador <- Contador + HijoDerecho.ContarNodosEnNivel(NivelObjetivo, NivelActual + 1)
+        Fin Si
+        retornar Contador
+    Fin Si
+Fin Método
+
+El tiempo de ejecución es O(n), ya que cada nodo del árbol es visitado en el peor caso.
