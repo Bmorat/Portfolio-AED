@@ -1,0 +1,25 @@
+1. Revisión del algoritmo de Kruskal:
+El algoritmo de Kruskal es un método de encontrar el árbol de expansión mínima (MST) de un grafo. Este algoritmo sigue los siguientes pasos:
+-Ordenar todas las aristas del grafo en orden ascendente según su peso.
+-Inicializar un conjunto de componentes conectados (inicialmente cada vértice es su propio componente).
+-Iterar sobre las aristas ordenadas y, para cada arista, agregarla al MST si conecta dos componentes diferentes. Esto se repite hasta que todos los vértices estén conectados.
+
+2. Estructuras de datos necesarias:
+-Aristas: Una lista ordenada de las aristas del grafo.
+-Conjunto de componentes: Un conjunto de componentes conectados, que puede implementarse usando una estructura de datos como Union-Find para mantener y unir componentes.
+Sí, se pueden utilizar las estructuras de datos existentes en el código proporcionado, con algunas adaptaciones y adiciones.
+
+3.Pseudocódigo del algoritmo de Kruskal:
+
+PROCEDURE Kruskal(Grafo G):
+    Inicializar una lista vacía A para almacenar las aristas del MST
+    Crear una estructura Union-Find para los vértices del grafo
+    
+    Ordenar todas las aristas del grafo G en orden ascendente según su costo
+    
+    PARA cada arista e en el grafo G ordenadas:
+        SI los extremos de la arista e no forman un ciclo:
+            Añadir la arista e a la lista A
+            Unir los componentes de los extremos de la arista e en la estructura Union-Find
+    
+    RETORNAR el conjunto de aristas A como el MST

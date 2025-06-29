@@ -1,0 +1,67 @@
+1. Describe en lenguaje natural la solución al problema (solución general y modelo)
+La solución al problema de conectar todas las casas con la subestación de energía eléctrica de manera óptima es un problema clásico de optimización conocido como el problema del árbol de expansión mínimo. La solución busca minimizar el costo total de la instalación de cables, lo cual es equivalente a encontrar un árbol de expansión mínimo en un grafo donde los nodos representan las casas y la subestación, y las aristas (bordes) representan las posibles conexiones con costos asociados a las distancias entre nodos.
+
+-Solución General:
+ - Representar las casas y la subestación como nodos de un grafo.
+ - Representar las posibles conexiones entre ellos como aristas con un peso equivalente a la distancia entre los nodos.
+ - Utilizar un algoritmo de MST, como el algoritmo de Kruskal o el algoritmo de Prim, para encontrar el conjunto de aristas que conectan todos los nodos con el costo mínimo.
+
+-Modelo:
+- Nodos: Representan las casas y la subestación.
+- Aristas: Representan las posibles conexiones entre las casas y la subestación, con pesos asociados a las distancias.
+
+ 2. Estructuras de Datos Necesarias
+
+Para representar el problema y resolverlo, se pueden usar las siguientes estructuras de datos:
+
+1. Grafo: Representado mediante una lista de adyacencia o una matriz de adyacencia.
+2. Aristas: Una lista de tuplas que representen las conexiones posibles y sus costos (distancias).
+3. Disjoint Set (Union-Find): Para el algoritmo de Kruskal, para manejar los conjuntos de nodos y detectar ciclos.
+4. Priority Queue (Cola de Prioridad): Para el algoritmo de Prim, para seleccionar la siguiente arista de menor costo.
+
+ 3. Seudocódigo de Alto Nivel
+
+Algoritmo de Kruskal:
+
+function KruskalMST(nodes, edges):
+    sort(edges, by weight)  // Ordenar las aristas por peso
+    create disjoint_set  // Crear un conjunto disjunto para manejar los nodos
+    mst = []  // Lista para almacenar las aristas del MST
+    for each (u, v, w) in edges:
+        if find_set(u) != find_set(v):  // Si u y v están en diferentes conjuntos
+            union(u, v)  // Unir los conjuntos
+            mst.append((u, v, w))  // Añadir la arista al MST
+    return mst
+
+
+Algoritmo de Prim:
+function PrimMST(nodes, edges):
+    start_node = select any node from nodes  // Seleccionar cualquier nodo como nodo inicial
+    mst = []  // Lista para almacenar las aristas del MST
+    priority_queue = new PriorityQueue()  // Crear una cola de prioridad
+    for each edge in edges starting from start_node:
+        priority_queue.push(edge)  // Añadir todas las aristas del nodo inicial a la cola de prioridad
+    while not priority_queue.is_empty():
+        (u, v, w) = priority_queue.pop()  // Seleccionar la arista de menor peso
+        if v not in mst_nodes:
+            mst.append((u, v, w))  // Añadir la arista al MST
+            mst_nodes.add(v)  // Añadir el nodo al conjunto de nodos del MST
+            for each edge in edges starting from v:
+                priority_queue.push(edge)  // Añadir las nuevas aristas a la cola de prioridad
+    return mst
+
+
+ 4. Análisis del Orden del Tiempo de Ejecución
+
+ Algoritmo de Kruskal:
+- Ordenar las aristas: \(O(E \log E)\), donde \(E\) es el número de aristas.
+- Operaciones de Union-Find: \(O(E \log V)\), donde \(V\) es el número de nodos (casas + subestación).
+
+El tiempo de ejecución total del algoritmo de Kruskal es \(O(E \log E + E \log V)\). Como \(E \log E\) domina \(E \log V\), el tiempo de ejecución es \(O(E \log E)\).
+
+ Algoritmo de Prim:
+- Operaciones de la cola de prioridad: \(O((V + E) \log V)\), ya que cada nodo y cada arista se inserta y extrae de la cola de prioridad.
+
+El tiempo de ejecución total del algoritmo de Prim es \(O((V + E) \log V)\).
+
+Ambos algoritmos son eficientes, pero Kruskal es generalmente más fácil de implementar si se utiliza una estructura de conjunto disjunto eficiente, mientras que Prim puede ser más eficiente en grafos densos donde \(E\) es grande en comparación con \(V\).

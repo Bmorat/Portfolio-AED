@@ -1,0 +1,77 @@
+4. Describe las estructuras de datos utilizadas para la implementación de KRUSKAL y analiza / investiga el orden del tiempo de ejecución del algoritmo que has desarrollado.
+Para la implementación del algoritmo de Kruskal en grafos no dirigidos, las estructuras de datos comúnmente utilizadas son:
+
+1. Lista de Aristas: Una lista que contiene todas las aristas del grafo, cada una con su peso asociado. Esta lista se ordena por pesos ascendentes.
+2. Estructura de Unión-Find (Union-Find): También conocida como estructura de Conjuntos Disjuntos (Disjoint Set Union, DSU), se utiliza para mantener un registro de los componentes conectados y para determinar si dos vértices pertenecen al mismo componente.
+
+ Descripción de las Estructuras de Datos:
+
+1. Lista de Aristas:
+   - Tipo: Lista (o un arreglo dinámico)
+   - Contenido: Aristas del grafo, cada una representada como una tupla o un objeto que contiene dos vértices y el peso de la arista.
+
+2. Estructura de Unión-Find:
+   - Tipo: Arreglo (dos arreglos: uno para los padres y otro para los rangos)
+   - Contenido: 
+     - Padre: Un arreglo donde `padre[i]` indica el padre del elemento `i`.
+     - Rango: Un arreglo donde `rango[i]` indica el rango (aproximadamente la profundidad) del árbol cuya raíz es `i`.
+
+ Algoritmo de Kruskal:
+
+1. Inicialización:
+   - Crear una lista de todas las aristas del grafo.
+   - Ordenar esta lista en orden ascendente según el peso de las aristas.
+   - Inicializar la estructura de Unión-Find para todos los vértices.
+
+2. Construcción del Árbol de Expansión Mínima (MST):
+   - Iterar sobre la lista de aristas ordenadas.
+   - Para cada arista, usar la estructura de Unión-Find para verificar si los dos vértices de la arista están en el mismo componente.
+   - Si no están en el mismo componente, añadir la arista al MST y unir los componentes utilizando la estructura de Unión-Find.
+
+ Orden de Tiempo de Ejecución:
+
+El orden de tiempo de ejecución del algoritmo de Kruskal se puede analizar en términos de las operaciones principales que realiza:
+
+1. Ordenación de las Aristas: Si `E` es el número de aristas, ordenar las aristas toma `O(E log E)` tiempo. Dado que en un grafo conexo `E` puede ser como máximo `V^2` (donde `V` es el número de vértices), el tiempo de ordenación puede ser acotado por `O(E log V)`.
+
+2. Inicialización de Unión-Find: Inicializar las estructuras de Unión-Find toma `O(V)` tiempo.
+
+3. Operaciones de Unión-Find: Cada operación de unión y búsqueda (find and union) tiene un tiempo amortizado de `O(α(V))`, donde `α` es la inversa de la función de Ackermann, que crece extremadamente lento y es prácticamente constante para todos los propósitos prácticos. En el peor de los casos, habrá `E` operaciones de este tipo, resultando en un tiempo total de `O(E α(V))`.
+
+Por lo tanto, el tiempo de ejecución total del algoritmo de Kruskal es `O(E log E + E α(V))`. Dado que `log E` es aproximadamente `log V` en grafos densos, el tiempo total se puede simplificar a `O(E log V)`.
+
+En resumen, el algoritmo de Kruskal es eficiente y adecuado para grafos dispersos (sparse graphs) debido a su dependencia principal en el número de aristas `E` y la casi constante inversa de la función de Ackermann.
+5. ¿puedes encontrar otras alternativas de implementación mejores?
+Además del algoritmo de Kruskal, existen otras alternativas para encontrar el Árbol de Expansión Mínima (MST) en grafos no dirigidos. Las principales alternativas son:
+
+Algoritmo de Prim:
+
+Descripción: El algoritmo de Prim también encuentra el MST, pero lo hace de manera diferente. Comienza desde un vértice inicial y crece el MST agregando la arista de menor peso que conecta un vértice en el MST con un vértice fuera del MST.
+Eficiencia: Utilizando una cola de prioridad (heap), el algoritmo de Prim tiene una complejidad de O((V + E) log V) cuando se implementa con un heap binario. Para grafos densos, donde E ≈ V^2, esto se puede mejorar a O(V^2) usando una matriz de adyacencia.
+Ventajas: Prim es generalmente más eficiente que Kruskal en grafos densos.
+Algoritmo de Borůvka:
+
+Descripción: Este algoritmo también encuentra el MST mediante una serie de etapas donde en cada etapa cada componente del grafo agrega la arista más barata que lo conecta con un componente diferente.
+Eficiencia: Borůvka tiene una complejidad de O(E log V), similar a Kruskal, pero puede ser más fácil de paralelizar y, por lo tanto, puede ser más eficiente en ciertas arquitecturas de hardware.
+6. ¿cuán importante es el consumo de memoria asociado?
+El consumo de memoria es un aspecto crucial a considerar en la implementación de algoritmos de MST, especialmente cuando se trata de grafos grandes. Aquí se analiza el consumo de memoria para Kruskal, Prim y Borůvka:
+
+Algoritmo de Kruskal:
+
+Memoria para Lista de Aristas: Necesita almacenar todas las aristas del grafo, lo cual requiere O(E) espacio.
+Memoria para Unión-Find: Utiliza estructuras de Unión-Find, que requieren O(V) espacio.
+Total: O(E + V)
+Algoritmo de Prim:
+
+Memoria para Cola de Prioridad: Utiliza una cola de prioridad (heap), que requiere O(V) espacio.
+Memoria para Matriz de Adyacencia (en implementaciones densas): Si se usa una matriz de adyacencia, requiere O(V^2) espacio.
+Total: O(V^2) en grafos densos, O(V + E) en grafos dispersos.
+Algoritmo de Borůvka:
+
+Memoria para Lista de Aristas: Similar a Kruskal, requiere O(E) espacio.
+Memoria para Componentes: Necesita estructuras para mantener los componentes, similar a Unión-Find, O(V) espacio.
+Total: O(E + V)
+
+Kruskal: Es eficiente en términos de espacio para grafos dispersos, pero puede no ser ideal para grafos densos debido al gran número de aristas.
+Prim: Puede ser más eficiente en términos de tiempo para grafos densos, pero su consumo de memoria puede ser significativo debido a la matriz de adyacencia.
+Borůvka: Ofrece un balance entre tiempo y espacio y es más fácil de paralelizar.

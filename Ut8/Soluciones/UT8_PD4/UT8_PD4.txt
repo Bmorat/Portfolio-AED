@@ -1,0 +1,74 @@
+1. Menciona qué tipo de datos abstractos representa este problema y qué algoritmos son necesarios para resolver la necesidad de la compañía.
+
+El problema puede representarse como un grafo no dirigido, en el cual los nodos representan los Centros de Comunicaciones, las aristas representan las conexiones entre los Centros de comunicaciones y los pesos de las aristas representan el costo de establecer las conexiones.
+Para poder resolver la necesidad de la compañía seria necesario utilizar el algoritmo de kruskal y el algoritmo de prim.
+2. Escribe en seudocódigo los algoritmos mencionados.
+-Kruskal(G):
+    A = ∅
+    Para cada vértice v en G.V:
+        HACER MAKE-SET(v)
+    Ordenar las aristas de G.E en orden creciente por peso w
+    Para cada arista (u, v) en el orden creciente:
+        SI FIND-SET(u) ≠ FIND-SET(v):
+            A = A ∪ {(u, v)}
+            UNION(u, v)
+    retornar A
+-PRIM(G, w, r):
+    Para cada u en G.V:
+        u.key = ∞
+        u.pi = NIL
+    r.key = 0
+    Q = G.V
+    Mientras Q ≠ ∅:
+        u = EXTRACT-MIN(Q)
+        Para cada v en G.Adj[u]:
+            SI v en Q y w(u, v) < v.key:
+                v.pi = u
+                v.key = w(u, v)
+
+Los resultados del algoritmo kruskal son los siguientes:
+CC1 - CC4: 3
+CC1 - CC6: 4
+CC2 - CC3: 3
+CC3 - CC4: 4
+CC3 - CC5: 5
+Mientras que los del algoritmo de prim son los siguientes:
+CC1 - CC4: 3
+CC1 - CC6: 4
+CC2 - CC3: 3
+CC3 - CC4: 4
+CC3 - CC5: 5
+CC4 - CC6: 6
+
+
+ejercicio 2:
+Clase Grafo:
+    Método constructor(número de vértices):
+        Inicializar la lista de adyacencia para cada vértice
+
+    Método agregarArista(vértice u, vértice v):
+        Añadir v a la lista de adyacencia de u
+        Añadir u a la lista de adyacencia de v  // Debido a que el grafo es no dirigido
+
+    Método booleano conectados(vértice v, vértice w):
+        Crear un arreglo visitado de tamaño número de vértices, inicializado en falso
+        Retornar dfs(v, w, visitado)
+
+    Método privado booleano dfs(vértice actual, vértice objetivo, arreglo booleano visitado):
+        Si actual es igual a objetivo:
+            Retornar verdadero
+        Marcar actual como visitado
+        Para cada vecino en la lista de adyacencia de actual:
+            Si vecino no ha sido visitado:
+                Si dfs(vecino, objetivo, visitado) retorna verdadero:
+                    Retornar verdadero
+        Retornar falso
+
+Método principal:
+    Crear una instancia del grafo con el número de vértices deseado
+
+    Lista de aristas, donde cada arista es un par de vértices
+    Para cada arista en la lista de aristas:
+        Llamar al método agregarArista con los vértices de la arista
+
+    Llamar al método conectados con dos vértices específicos y mostrar el resultado
