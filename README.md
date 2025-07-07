@@ -17,3 +17,7 @@ https://www.toptal.com/developers/sorting-algorithms
 ![image](https://github.com/user-attachments/assets/b00b303e-b4fd-42ca-af56-14671fec3666)
 
 
+Esto es un proyecto que realice con JAVA para adaptarme al lenguaje, se trata de un bot que busca ofertas de vuelos
+utilizando diferentes estructuras de datos vistas en el curso y herramientas como api de telegram y api de un buscador de vuelos
+
+https://github.com/Bmorat/AirSaverBot
