@@ -1,6 +1,6 @@
 # 🌳 Simulador Visual de Árboles Binarios en Java
 
-![Captura del simulador](Captura%20de%20pantalla%202025-07-06%20a%20la(s)%2010.21.14%E2%80%AFp.%C2%A0m..png)
+![Captura del simulador]([Captura%20de%20pantalla%202025-07-06%20a%20la(s)%2010.21.14%E2%80%AFp.%C2%A0m..png](https://github.com/Bmorat/Portfolio-AED/blob/main/Materiales%20herramientas/Captura%20de%20pantalla%202025-07-06%20a%20la(s)%2010.16.44%E2%80%AFp.%C2%A0m..png?raw=true))
 
 ## 📌 Descripción
 
